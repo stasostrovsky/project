@@ -1,0 +1,3 @@
+UserName: stasostrovsky
+Email: stas_ostrovsky@hotmail.com
+Password: MyGitHubStas1966
