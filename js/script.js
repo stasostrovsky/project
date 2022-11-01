@@ -1,120 +1,43 @@
 "use strict";
-//alert(1);
-/* const res = confirm("Что делать");
-console.log(res); */
-const answer = prompt("сколько лет","55");
-console.log(answer);
-/* let number = 5;
-const leftBorderWidth = 1;
-console.log(number);
+/* Задание на урок:
 
-let id = Symbol("123фф");
-console.log(id.description); // id
+1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
+'Сколько фильмов вы уже посмотрели?'
 
-console.log(typeof "foo");
-console.log(typeof 125);
+2) Создать объект personalMovieDB и в него поместить такие свойства:
+    - count - сюда передается ответ на первый вопрос
+    - movies - в это свойство поместить пустой объект
+    - actors - тоже поместить пустой объект
+    - genres - сюда поместить пустой массив
+    - privat - в это свойство поместить boolean(логическое) значение false
 
-const obj = {
-    name: "John",
-    age: 25,
-    isMarried: false
+3) Задайте пользователю по два раза вопросы:
+    - 'Один из последних просмотренных фильмов?'
+    - 'На сколько оцените его?'
+Ответы стоит поместить в отдельные переменные
+Записать ответы в объект movies в формате: 
+    movies: {
+        'logan': '8.1'
+    }
+
+Проверить, чтобы все работало без ошибок в консоли */
+
+let numberOfFilms = 5;
+numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели","");
+//console.log(numberOfFilms);
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies:{},
+    actors:{},
+    genres:[],
+    privat: false
 };
 
-console.log(obj.name);
+let nameFilm = prompt('Один из последних просмотренных фильмов?',"");
+let scoreFilm = prompt('На сколько оцените его?',"");
+personalMovieDB.movies[nameFilm] = scoreFilm;
 
-let name = "Ilya";
-
-console.log( `hello ${1}` ); // ?
-
-console.log( `hello ${"name"}` ); // ?
-
-console.log( `hello ${name}` ); // ? */
-
-//const obj = {
- //   name: "Стас",
- //   age: 54,
- //   isMarried: true
-//};
-
-//console.log(obj);
-
-//let id = Symbol("id");
-//console.log(id.toString());
-//alert(id.toString());
-// alert("Hello");
-//const result = confirm("Вы здесь?");
-//console.log(result);
-
-/* const result = +prompt("Вы здесь?", "18");
-console.log(result+2);
- */
-/* const answer = [];
-answer[0] = prompt('Фамилия',"");
-answer[1] = prompt('Имя',"");
-answer[2] = prompt('ФВозрастИО',"");
-document.write(answer); */
-
-//  const categorya = "toys";
-// console.log('https://someurl.com/' + categorya + '/5');
-// console */.log(`https://someurl.com/${categorya}/5`);
-
-// const user1 = 'stas';
-// alert(`hello ${user1}`);
-/* let counter = 2;
-counter++;        // работает как counter = counter + 1, просто запись короче
-console.log( ++counter ); */
-/* let message;
-message = 'Hello!';
-
-alert(message); */
-
-/* let message = "Это";
-
-// повторение ключевого слова 'let' приводит к ошибке
-let message1 = "Другое"; // SyntaxError: 'message' has already been declared
- */
-/* let let = 5; // нельзя назвать переменную "let", ошибка!
-let return = 5; // также нельзя назвать переменную "return", ошибка! */
-/* let name1 = "Стас";
-
-// Вставим переменную
-alert( `Привет, ${name1}!` ); // Привет, Иван!
-
-// Вставим выражение
-alert( `результат: ${1 + 2}` ); // результат: 3 */
-
-/* console.log( Number("   123   ") ); // 123
-console.log( Number("123z") );      // NaN (ошибка чтения числа на месте символа "z")
-console.log( Number(true) );        // 1
-console.log( Number(false) );       // 0
-console.log( Number(undefined) );    
-
-console.log( Boolean(1) ); // true
-console.log( Boolean(0) ); // false
-
-console.log( Boolean("Привет!") ); // true */
-/* // console.log( typeof('aa'/2) ); // false// 0
- let xer = 'aa'/25;
-console.log( xer ); // false// 0
-console. log( typeof(xer) ); // false// 0 
-*/
-/* console.log( Number("   123   ") ); // 123
-console.log( Number("123z") );      // NaN (ошибка чтения числа на месте символа "z")
-console.log( Number(true) );        // 1
-console.log( Number(false) );       // 0
-console.log(typeof 10);
-
-
-let str = "123";
-console.log(typeof str); // string
-
-let num = Number(str); // становится числом 123
-
-console.log("typeof: "+ typeof num); // number
-console.log("значение: " +  num); // number */
-/* console.log(typeof null);
-console.log(typeof undefined); */
-const User = "Stas";
-alert(`Привет, ${User}`);
-
-console.log(4 + "5");
+nameFilm = prompt('Один из последних просмотренных фильмов?',"");
+scoreFilm = prompt('На сколько оцените его?',"");
+personalMovieDB.movies[nameFilm] = scoreFilm;
+console.log(personalMovieDB);
