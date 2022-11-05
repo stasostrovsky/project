@@ -1,125 +1,170 @@
-"use strict";
-/* Задание на урок:
+'use strict';
 
-1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
-'Сколько фильмов вы уже посмотрели?'
+/* // Место для первой задачи
+function sayHello(userName) {
+    userName = "Привет, " + userName + "!";
+    //userName = `Привет ${userName} !`;
+    
+    return  userName;
+}
 
-2) Создать объект personalMovieDB и в него поместить такие свойства:
-    - count - сюда передается ответ на первый вопрос
-    - movies - в это свойство поместить пустой объект
-    - actors - тоже поместить пустой объект
-    - genres - сюда поместить пустой массив
-    - privat - в это свойство поместить boolean(логическое) значение false
+// Место для второй задачи
+function returnNeighboringNumbers(myNumber) {
+    let arr = [];
+    --myNumber;
+    for(let i = 0; i < 3; i++){
+        arr[i] = myNumber;
+        myNumber++;
+    }
+    return arr;
+}
 
-3) Задайте пользователю по два раза вопросы:
-    - 'Один из последних просмотренных фильмов?'
-    - 'На сколько оцените его?'
-Ответы стоит поместить в отдельные переменные
-Записать ответы в объект movies в формате: 
-    movies: {
-        'logan': '8.1'
+// Место для третьей задачи
+function getMathResult(Baza, Povtorit) {
+
+    if  ( String(typeof(Povtorit)) != "number" || Povtorit <= 0 ) {
+        return Baza;
     }
 
-Проверить, чтобы все работало без ошибок в консоли */
+    let res = "";
 
-/* let numberOfFilms = 5;
-numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели","");
-//console.log(numberOfFilms);
-let personalMovieDB = {
+    for( let i = 1; i <= Povtorit; i++ ) {
+        res = res + Baza * i + (i < Povtorit ? "---" : "");
+    }
+
+    return res;
+
+} */
+
+/* let guestList = `Guests:
+ * John
+ * Pete
+ * Mary
+`;
+
+console.log(guestList);
+
+guestList = "Guests:\n * John\n * Pete\n * Mary";
+
+console.log(guestList); // список гостей, состоящий из нескольких строк
+
+for (let char of "Hello") {
+    console.log(char); // H,e,l,l,o (char — сначала "H", потом "e", потом "l" и т. д.)
+  }
+ */
+
+/* let str = 'Ослик Иа-Иа посмотрел на виадук';
+let target = 'Иа'; // цель поиска
+let pos = 0;
+
+while (true) {
+  
+  let foundPos = str.indexOf(target, pos);
+  
+  if (foundPos == -1) {
+    break;
+  }
+
+  console.log( `Найдено тут: ${foundPos}` );
+  
+  pos = foundPos + 1; // продолжаем со следующей позиции
+
+} */
+
+/* let str = "stringify";
+// 'strin', символы от 0 до 5 (не включая 5)
+console.log( str.slice(0, 5) );
+// 's', от 0 до 1, не включая 1, т. е. только один символ на позиции 0
+console.log( str.slice(0, 1) ); */
+
+/* let str = "stringify";
+
+// для substring эти два примера — одинаковы
+console.log( str.substring(2, 6) ); // "ring" */
+
+/* Задание на урок:
+1) Первую часть задания повторить по уроку
+2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
+false - выводит в консоль главный объект программы
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres
+P.S. Функции вызывать не обязательно */
+
+
+
+let numberOfFilms;
+
+const personalMovieDB = {
     count: numberOfFilms,
-    movies:{},
-    actors:{},
-    genres:[],
+    movies: {},
+    actors: {},
+    genres: [],
     privat: false
 };
 
-let nameFilm = prompt('Один из последних просмотренных фильмов?',"");
-let scoreFilm = prompt('На сколько оцените его?',"");
-personalMovieDB.movies[nameFilm] = scoreFilm;
+start();
 
-nameFilm = prompt('Один из последних просмотренных фильмов?',"");
-scoreFilm = prompt('На сколько оцените его?',"");
-personalMovieDB.movies[nameFilm] = scoreFilm;
-console.log(personalMovieDB); */
-/* let condition = 50;
+rememberMyFilms();
+detectPersonalLevel();
+showMyDB(personalMovieDB.privat);
+writeYourGenres();
 
-if (condition == 50) {
-    console.log("Ура");
-} else {
-    console.log("Not Ура");
-} */
+function start() {
 
-/* let shoppingDone = true;
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-if (shoppingDone) {
-    console.log("Ура");
-} else {
-    console.log("Not Ура");
-} */
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
 
-/* let choice = 'rainy';
-
-  if (choice === 'sunny') {
-    console.log('Сегодня хорошо и солнечно. Носите шорты! Идите на пляж, или в парк, и купите мороженое.');
-  } else if (choice === 'rainy') {
-    console.log('Дождь падает за окном; возьмите плащ и зонт, и не находитесь слишком долго на улице.');
-  } else if (choice === 'snowing') {
-    console.log('Снег падает - морозно! Лучше всего посидеть с чашкой горячего шоколада или слепить снеговика.');
-  } else if (choice === 'overcast') {
-    console.log('Дождя нет, но небо серое и мрачное; он все может измениться в любую минуту, поэтому на всякий случай возьмите дождевик.');
-  } else {
-    console.log('');
-  }
-
-  let xxx = 55;
-
-  switch (xxx) {
-    case 50:
-        console.log('выполнить этот код 50');
-      break;
-  
-    case 55:
-        console.log('выполнить этот код 55');
-      break;
-  
-    default:
-        console.log('а вообще-то, выполнить только этот код');
-      break;
-  } */
-
-  
-/* console.log( NaN || 2 || undefined );
- 
-console.log( NaN && 2 && undefined );
- 
-console.log( 1 && 2 && 3 );
- 
-console.log( !1 && 2 || !3 );
- 
-console.log( 25 || null && !3 );
- 
-console.log( NaN || null || !3 || undefined || 5);
- 
-console.log( NaN || null && !3 && undefined || 5);
- 
-console.log( 5 === 5 && 3 > 1 || 5); */
-
-/* const hamburger = 3;
-const fries = 3;
-const cola = 0;
-const nuggets = 2;
- 
-if (hamburger === 3 && cola || fries === 3 && nuggets) {
-   console.log('Done!')
-} */
-
-/* let i = 0;
-while (i < 3) { // выводит 0, затем 1, затем 2
-    console.log( i );
-  i++;
-} */
-let i = 3;
-while (i) { // когда i будет равно 0, условие станет ложным, и цикл остановится
-    console.log( i );
-  i--;
 }
+
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+              b = prompt('На сколько оцените его?', '');
+    
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+    }
+}
+
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log("Просмотрено довольно мало фильмов");
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+        console.log("Вы классический зритель");
+    } else if (personalMovieDB.count >= 30) {
+        console.log("Вы киноман");
+    } else {
+        console.log("Произошла ошибка");
+    }
+}
+
+function showMyDB (hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
+
+function writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+    }
+}
+
+let str = "Привет";
+str.test = 5; // (*)
+console.log(str.test);
+
+
+let a = 0b11111111; // бинарная форма записи числа 255
+let b = 0o377; // восьмеричная форма записи числа 255
+console.log(a);
+console.log( a == b ); 
