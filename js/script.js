@@ -1,170 +1,173 @@
 'use strict';
 
-/* // Место для первой задачи
-function sayHello(userName) {
-    userName = "Привет, " + userName + "!";
-    //userName = `Привет ${userName} !`;
-    
-    return  userName;
-}
+/* let a = +prompt("",10);
+let b = +prompt("",20);
+let c = a + b; */
 
-// Место для второй задачи
-function returnNeighboringNumbers(myNumber) {
-    let arr = [];
-    --myNumber;
-    for(let i = 0; i < 3; i++){
-        arr[i] = myNumber;
-        myNumber++;
+/* console.log(6.35.toFixed(2));
+console.log( +6.35.toFixed(20) ); */
+
+/* function readNumber() {
+    let num;
+  
+    do {
+      num = prompt("Введите число", 0);
+    } while ( !isFinite(num) );
+  
+    if (num === null || num === '') {
+        return null;
     }
-    return arr;
-}
-
-// Место для третьей задачи
-function getMathResult(Baza, Povtorit) {
-
-    if  ( String(typeof(Povtorit)) != "number" || Povtorit <= 0 ) {
-        return Baza;
-    }
-
-    let res = "";
-
-    for( let i = 1; i <= Povtorit; i++ ) {
-        res = res + Baza * i + (i < Povtorit ? "---" : "");
-    }
-
-    return res;
-
-} */
-
-/* let guestList = `Guests:
- * John
- * Pete
- * Mary
-`;
-
-console.log(guestList);
-
-guestList = "Guests:\n * John\n * Pete\n * Mary";
-
-console.log(guestList); // список гостей, состоящий из нескольких строк
-
-for (let char of "Hello") {
-    console.log(char); // H,e,l,l,o (char — сначала "H", потом "e", потом "l" и т. д.)
+  
+    return +num;
   }
- */
-
-/* let str = 'Ослик Иа-Иа посмотрел на виадук';
-let target = 'Иа'; // цель поиска
-let pos = 0;
-
-while (true) {
   
-  let foundPos = str.indexOf(target, pos);
-  
-  if (foundPos == -1) {
-    break;
-  }
-
-  console.log( `Найдено тут: ${foundPos}` );
-  
-  pos = foundPos + 1; // продолжаем со следующей позиции
-
-} */
-
-/* let str = "stringify";
-// 'strin', символы от 0 до 5 (не включая 5)
-console.log( str.slice(0, 5) );
-// 's', от 0 до 1, не включая 1, т. е. только один символ на позиции 0
-console.log( str.slice(0, 1) ); */
-
-/* let str = "stringify";
-
-// для substring эти два примера — одинаковы
-console.log( str.substring(2, 6) ); // "ring" */
-
-/* Задание на урок:
-1) Первую часть задания повторить по уроку
-2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
-false - выводит в консоль главный объект программы
-3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
-"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
-genres
-P.S. Функции вызывать не обязательно */
-
-
-
-let numberOfFilms;
-
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
-
-start();
-
-rememberMyFilms();
-detectPersonalLevel();
-showMyDB(personalMovieDB.privat);
-writeYourGenres();
-
-function start() {
-
-    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-    }
-
+  alert(`Число: ${readNumber()}`); */
+/* let i = 0;
+while (i.toFixed(0) != 10) {
+  i += 0.2;
+  console.log(i);
 }
+console.log(i); */
 
-function rememberMyFilms() {
-    for (let i = 0; i < 2; i++) {
-        const a = prompt('Один из последних просмотренных фильмов?', ''),
-              b = prompt('На сколько оцените его?', '');
+function calculateVolumeAndArea(a) {
     
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-            personalMovieDB.movies[a] = b;
-            console.log('done');
-        } else {
-            console.log('error');
-            i--;
-        }
+    if (!Number.isFinite(a) || a < 0 || a.toString().includes(".")) {
+        return "При вычислении произошла ошибка";
     }
+
+    let str = `Объем куба: ${a*a*a}, площадь всей поверхности: ${6*a*a}`;
+    return str;
+}
+console.log(calculateVolumeAndArea("22"));
+
+function getCoupeNumber(place) {
+    
+    let str = 1;
+
+    if (!Number.isFinite(place) || place < 0 || place.toString().includes(".")) {
+        return "Ошибка. Проверьте правильность введенного номера места";
+    }
+
+    if (place < 1 || place > 36) {
+        return `Таких мест в вагоне не существует`;
+    }
+
+    let placeMin = 1;
+    let placeMax = 4;
+    let CoupeNumber = 1;
+
+    for (CoupeNumber = 1; CoupeNumber < 10; CoupeNumber++) {
+        if (place >= placeMin && place <= placeMax){
+            return CoupeNumber;
+        }   
+        placeMin = placeMin + 4;
+        placeMax = placeMax + 4;
+    }
+
 }
 
-function detectPersonalLevel() {
-    if (personalMovieDB.count < 10) {
-        console.log("Просмотрено довольно мало фильмов");
-    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-        console.log("Вы классический зритель");
-    } else if (personalMovieDB.count >= 30) {
-        console.log("Вы киноман");
+
+console.log(getCoupeNumber(37));
+
+function getTimeFromMinutes(fromMinutes) {
+    
+    if (typeof (fromMinutes) !== 'number' || fromMinutes < 0 || !Number.isInteger(fromMinutes)) {
+        return "Ошибка, проверьте данные";
+    }
+
+    let hour = Math.floor(fromMinutes/60);
+    let minutes = fromMinutes - hour * 60;
+
+    let nameHour = "";
+
+    if (hour === 1) {
+        nameHour = "час";
+    } else if (hour > 1 && hour < 5) {
+        nameHour = "часа";
     } else {
-        console.log("Произошла ошибка");
+        nameHour = "часов";
     }
-}
 
-function showMyDB (hidden) {
-    if (!hidden) {
-        console.log(personalMovieDB);
+    let str = `Это ${hour} ${nameHour} и ${minutes} минут`;
+
+    return str;
+}
+console.log(getTimeFromMinutes(550));
+
+function findMaxNumber(a1,a2,a3,a4) {
+
+    if (typeof (a1) !== 'number' || typeof (a2) !== 'number' || typeof (a3) !== 'number' || typeof (a4) !== 'number' ) {
+        return 0;
     }
-}
 
-function writeYourGenres() {
-    for (let i = 1; i <= 3; i++) {
-        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+    return Math.max(a1,a2,a3,a4);
+}
+console.log(findMaxNumber(33,44,55));
+
+function fib(countIter) {
+    
+    let num = "";
+
+    if (typeof (countIter) !== 'number' || countIter <= 0 || !Number.isInteger(countIter)) {
+        return num;
     }
+  
+    if (countIter === 1) {
+        return "0";
+    } 
+    
+    let arr = [];
+    for (let i = 0; i < countIter; i++)
+    {   
+        if (i <= 1) {
+            arr[i] = i;
+        } else {
+            arr[i] = arr[i-2] + arr[i-1];
+        }
+        num = num + arr[i] + (i < countIter - 1 ? " " : "");
+    }
+
+    return num;
 }
+console.log(fib(7));
 
-let str = "Привет";
-str.test = 5; // (*)
-console.log(str.test);
+let sum = 0.1 + 0.2;
+console.log( sum.toFixed(2) ); // 0.30
 
 
-let a = 0b11111111; // бинарная форма записи числа 255
-let b = 0o377; // восьмеричная форма записи числа 255
-console.log(a);
-console.log( a == b ); 
+
+let o1 = { a: 1 };
+let o2 = { b: 2 };
+let o3 = { c: 3 };
+
+let obj = Object.assign(o1, o2, o3);
+console.log(obj); // { a: 1, b: 2, c: 3 }
+console.log(o1);  // { a: 1, b: 2, c: 3 }
+
+/* let user = {
+    name: "John"
+  };
+  
+  let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+  console.log(descriptor); */
+
+  //console.log( JSON.stringify(descriptor, null, 2 ) );
+  /* дескриптор свойства:
+  {
+    "value": "John",
+    "writable": true,
+    "enumerable": true,
+    "configurable": true
+  }
+  */
+  let user = {
+    name: "John"
+  };
+  
+  Object.defineProperty(user, "name", {
+    writable: false
+  });
+  
+  user.name = "Pete";
+  console.log(user.name);
+
