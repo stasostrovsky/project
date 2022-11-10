@@ -160,7 +160,7 @@ console.log(o1);  // { a: 1, b: 2, c: 3 }
     "configurable": true
   }
   */
-  let user = {
+  /* let user = {
     name: "John"
   };
   
@@ -169,5 +169,212 @@ console.log(o1);  // { a: 1, b: 2, c: 3 }
   });
   
   user.name = "Pete";
-  console.log(user.name);
+  console.log(user.name); */
 
+  /* let user = { };
+
+  Object.defineProperty(user, "name", {
+    value: "John",
+    // для нового свойства необходимо явно указывать все флаги, для которых значение true
+    enumerable: true,
+    configurable: true
+  });
+  
+  console.log(user.name); // John
+  user.name = "Pete"; // Ошибка
+  console.log(user.name); // John */
+
+/*   let user = {
+    name: "John"
+  };
+  
+  let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+  
+  console.log(descriptor);
+  console.log( JSON.stringify(descriptor, null, 2 ) ); */
+
+  /* let user = {
+    name: "John",
+    toString() {
+      return "Stzs";
+    }
+  };
+  
+  // По умолчанию оба свойства выведутся:
+  for (let key in user) {
+    console.log(key); // name, toString
+    console.log(String(user)); // name, toString
+  }
+
+  let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ];
+  
+  console.log( matrix[1][1] ); // 5, центральный элемент */
+
+  //let arr = ["Я", "изучаю", "JavaScript"];
+
+// с позиции 2
+// удалить 0 элементов
+// вставить "сложный", "язык"
+/* arr.splice(2, 1);
+
+console.log( arr ); // "Я", "изучаю", "сложный", "язык", "JavaScript"
+
+["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
+    console.log(`${item} имеет позицию ${index} в ${array}`);
+  }); */
+
+  /* let user = {
+    name: "John",
+    age: 30,
+    isAdmin: true
+  };
+  
+  for (let key in user) {
+    // ключи
+    console.log( key );  // name, age, isAdmin
+    // значения ключей
+    console.log( typeof(user[key]) === "boolean"); // John, 30, true
+  } */
+
+  /* const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLangs: function(personalPlanPeter) {
+        let age = personalPlanPeter.age;
+        let languages = personalPlanPeter.skills.languages;
+        let languagesStr = languages.join(' ').toUpperCase();
+        return `Мне ${age} и я владею языками: ${languagesStr}`;
+    }
+};
+
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
+
+let msg = ""; */
+/* function showExperience(plan) {
+    return plan.skills.exp;
+}
+
+msg = showExperience(personalPlanPeter);
+console.log(msg); */
+
+/* function showProgrammingLangs(plan) {
+    let programmingLangs = plan.skills.programmingLangs;
+    let msg = ``;
+    for (let key in programmingLangs) {
+        msg = msg + `Язык ${key} изучен на ${programmingLangs[key]}\n`;
+    }
+    msg = msg.slice(0, msg.length -1);
+    return msg;//
+}
+msg = showProgrammingLangs(personalPlanPeter);
+console.log(msg); */
+
+/* 3) Создайте метод showAgeAndLangs внутри объекта personalPlanPeter. 
+При его вызове метод будет принимать в себя объект и возвращать строку в нужном виде.
+
+Пример:
+
+personalPlanPeter.showAgeAndLangs(personalPlanPeter)
+=> 'Мне 29 и я владею языками: RU ENG'
+
+Заметьте, что возраст и языки подставляются автоматически из объекта, 
+а языки всегда в верхнем регистре (большими буквами). Если данные в объекте поменяются, 
+то и сообщение тоже изменится. */
+
+//let languagesStr = languages.join(' ')
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+    
+    let msg = ``;
+    
+    if (arr.length === 0) {
+        msg = `Семья пуста`;
+    } else {
+        msg = `Семья состоит из: ` + arr.join(' ');
+    }
+   
+    return msg;
+}
+
+let msg = showFamily(family);
+console.log(msg);
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+   for(let i = 0; i < arr.length; i++) {
+        arr[i] = arr[i].toLowerCase();
+        console.log(arr[i]);        
+   }
+}
+standardizeStrings(favoriteCities);
+
+
+const someString = 'This is some strange string';
+
+function reverse(str) {
+
+    if ( typeof(str) !== "string" ) {
+        return "Ошибка!";
+    }
+
+    let arr = str.split(` `);
+    arr = arr.reverse();
+
+    for (let i = 0; i < arr.length; i++) {
+        let str1 = arr[i];
+        let strReverse = ``;
+        for (let j = str1.length - 1; j >= 0; j--) {
+            strReverse = strReverse + str1[j];
+        }
+        arr[i] = strReverse;
+    }
+
+    str = arr.join(` `);
+
+    return str;
+
+}
+
+console.log(reverse(someString));
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(arr, missingCurr) {
+
+    if (arr.length === 0) {
+        return 'Нет доступных валют';
+    }
+
+    let str = "";
+    for (let item  of arr) {
+        if (item !== missingCurr) {
+            str = str + item + `\n`;
+        }
+    }
+
+    if (str === "") {
+        return 'Нет доступных валют';
+    } else {
+        return "Доступные валюты:\n" + str;
+    }
+
+}
+
+msg = availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY');
+
+console.log(msg);
